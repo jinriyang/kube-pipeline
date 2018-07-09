@@ -1,0 +1,46 @@
+{
+  "apiVersion": "extensions/v1beta1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "jfrog-cloud-app-demo",
+    "namespace": "devops"
+  },
+  "spec": {
+    "replicas": 1,
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "jfrog-cloud-app"
+        }
+      },
+      "spec": {
+        "imagePullSecrets":[{
+          "name": "artifactory-docker-registry"
+        }],
+        "containers": [
+          {
+            "name": "jfrog-cloud-app",
+            "image": "docker-release-local.demo.jfrogchina.com/jfrog-cloud-demo:4",
+            "imagePullPolicy": "IfNotPresent",
+            "env":[
+              {
+                "name": "APP_VERSION",
+                "valueFrom": {
+                  "configMapKeyRef": {
+                    "name": "app-config",
+                    "key": "version"
+                  }
+                }
+              }
+            ],
+            "ports": [
+              {
+                "containerPort": 8080
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

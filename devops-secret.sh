@@ -1,0 +1,1 @@
+kubectl create secret docker-registry artifactory-docker-registry --docker-username="admin" --docker-password="AKCp2WXCWmSmLjLc5VKVYuSeumtarKV7TioZfboRAEwC1tqKAUvbniFJqp7xLfCyvJ7GxWuJZ" --docker-email="fuhui@jfrogchina.com" --docker-server="docker-release-local.demo.jfrogchina.com" --namespace=devops

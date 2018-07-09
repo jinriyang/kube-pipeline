@@ -1,0 +1,8 @@
+{
+    "targetRepo" : "docker-release-local",
+    "dockerRepository" : "jfrog-cloud-demo", 
+    "targetDockerRepository" : "jfrog-cloud-demo",
+    "tag" : "4",
+    "targetTag" : "4",                           
+    "copy": false
+}
