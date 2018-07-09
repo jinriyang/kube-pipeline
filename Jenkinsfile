@@ -6,7 +6,7 @@ node {
     def tagName
     stage('Prepare') {
         // Variables initilization
-        artiServer = Artifactory.server('artiha-demo')
+        artiServer = Artifactory.server('artifactory-ha')
         buildInfo = Artifactory.newBuildInfo()
         // Build Env
         buildInfo.env.capture = true
@@ -33,7 +33,7 @@ node {
     stage('SCM') {
         // Checkout source code
         // Notice：MUST PULL WITH AUTH
-        git([url: 'https://gitlab.com/fuhui/kube-pipeline.git', branch: 'master', credentialsId: 'justin-gitlab2'])
+        git([url: 'git@github.com:jinriyang/kube-pipeline.git', branch: 'master'])
     }
     stage('Sonar') {
         // Sonar scan
