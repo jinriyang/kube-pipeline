@@ -53,7 +53,7 @@ node {
         tagName = 'docker-snapshot-local.demo.jfrogchina.com/jfrog-cloud-demo:' + env.BUILD_NUMBER
         docker.build(tagName)
         // TODO: Change to artifactory server object
-        def artDocker= Artifactory.docker('admin', 'AKCp2WXCWmSmLjLc5VKVYuSeumtarKV7TioZfboRAEwC1tqKAUvbniFJqp7xLfCyvJ7GxWuJZ')
+        def artDocker= Artifactory.docker('admin', 'ACWmSmLjLc5VKVYuSeumtarKV7TfboRAEwC1tqKAUvbniFJqp7xLfCyvJ7GxWuJZ')
         artDocker.push(tagName, 'docker-snapshot-local', buildInfo)
         artiServer.publishBuildInfo buildInfo
     }
@@ -73,7 +73,7 @@ node {
     }
     stage('Config'){
         // Checkout application cofiguration from cofig repo and init in kubernetes
-        sh 'curl -O -u admin:AKCp2WXCWmSmLjLc5VKVYuSeumtarKV7TioZfboRAEwC1tqKAUvbniFJqp7xLfCyvJ7GxWuJZ -X GET http://demo.jfrogchina.com/artifactory/kube-config/1.0/app.cfg'
+        sh 'curl -O -u admin:AKCp2WXCWmSmLjLc5VKVYuSeumtarKV7TqKAUvbniFJqp7xLfCyvJ7GxWuJZ -X GET http://demo.jfrogchina.com/artifactory/kube-config/1.0/app.cfg'
         sh 'kubectl -s kube-master:8080 --namespace=devops create configmap app-config --from-literal=$(cat app.cfg)'
     }
     stage('Kubernetes Deploy') {
